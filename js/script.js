@@ -38,4 +38,51 @@ let min_bicycle = bicycle.filter((elem) => {
     if(min == elem.peso){
         console.log(elem);
     }
-})
+});
+
+
+
+//SNACK 2
+const team = [
+    {
+        name: 'juventus',
+        points: 0,
+        fouls: 0
+    },
+    {
+        name: 'milan',
+        points: 0,
+        fouls: 0
+    },
+    {
+        name: 'inter',
+        points: 0,
+        fouls: 0
+    },
+    {
+        name: 'napoli',
+        points: 0,
+        fouls: 0
+    },
+    {
+        name: 'roma',
+        points: 0,
+        fouls: 0
+    },
+];
+//ciclo array di oggetti
+team.forEach((elem) => {
+    //assegno valore randomico a ogni chiave di ogni oggetto
+    elem.points = Math.floor((Math.random() * 100) + 1);
+    elem.fouls = Math.floor((Math.random() * 100) + 1);
+    //ritorno tutto l'oggetto
+    return elem;
+});
+
+const new_team = [];
+team.forEach((elem) => {
+    let {name, fouls} = elem;
+    let obj = {name, fouls};
+    new_team.push(obj);
+});
+console.log(new_team);
