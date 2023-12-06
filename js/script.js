@@ -34,9 +34,13 @@ bicycle.forEach((elem) => {
 //confronto valori di array per stabilire il minore
 let min = Math.min(...arr_peso);
 //filtro array di oggetti
+let view_bicycle = document.getElementById('bicycle');
 let min_bicycle = bicycle.filter((elem) => {
     if(min == elem.peso){
         console.log(elem);
+        let h2 = document.createElement('h2');
+        h2.innerText += `${elem.nome} ${elem.peso}`;
+        view_bicycle.appendChild(h2);
     }
 });
 
@@ -79,10 +83,62 @@ team.forEach((elem) => {
     return elem;
 });
 
+let view_team = document.getElementById('team');
+let ul = document.createElement('ul');
+ul.classList.add('list-unstyled');
+view_team.appendChild(ul);
+
 const new_team = [];
 team.forEach((elem) => {
     let {name, fouls} = elem;
     let obj = {name, fouls};
     new_team.push(obj);
+    ul.innerHTML += `<li>${name} falli subiti: ${fouls}</li>`;
 });
 console.log(new_team);
+
+
+//BONUS 1
+const article = [
+    {
+        name: 'Poppy',
+        type: 't-shirt',
+        color: 'red'
+    },
+    {
+        name: 'Jumping',
+        type: 'occhiali',
+        color: 'blue'
+    },
+    {
+        name: 'CrissCross',
+        type: 'scarpe',
+        color: 'black'
+    },
+    {
+        name: 'Jenny',
+        type: 'borsa',
+        color: 'pink'
+    }
+];
+
+let alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+let view_article = document.getElementById('article');
+
+
+let new_article = [];
+article.forEach((elem) => {
+    elem.position = alfabeto[Math.floor((Math.random() * alfabeto.length))];
+    new_article.push(elem);
+
+    let card = document.createElement('div');
+    card.classList.add('card');
+    view_article.appendChild(card);
+    card.innerHTML += `<h1 class="text-center">${elem.position}</h1>
+    <h2>${elem.name}</h2>
+    <p>${elem.type}</p>
+    <p>${elem.color}</p>`
+});
+console.log(new_article);
+
+//BONUS 2
